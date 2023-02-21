@@ -1,38 +1,361 @@
-.App {
-  text-align: center;
+body{
+  font-family: Noto;
+} 
+
+h1{
+  font-family: NotoBold;
+  font-size: 2.2rem;
+  margin: 0.2rem 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h3{
+  font-family: NotoSemiBold;
+  font-size: 1rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+h4{
+  font-family: NotoSemiBold;
+}
+
+p{
+  font-family: Noto;
+}
+
+.footer-item{
+  display: none !important;
+}
+.dropdown-item{
+  width: unset !important;
+}
+@font-face {
+    font-family: Noto;
+    src: url("./fonts/NotoSans-Regular.ttf");
+  } 
+@font-face {
+    font-family: NotoSemiBold;
+    src: url("./fonts/NotoSans-SemiBold.ttf");
+  } 
+@font-face {
+    font-family: NotoBold;
+    src: url("./fonts/NotoSans-Bold.ttf");
+  } 
+
+  .MuiFormControl-root{
+    display: block !important;
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .MuiOutlinedInput-root{
+    width: 90%;
   }
-  to {
-    transform: rotate(360deg);
+
+  .form {
+    background: #0e101c;
+    max-width: 700px;
+    margin: 0 auto;
   }
-}
+  
+  .react-responsive-modal-modal{
+    max-width: 60% !important;
+    width: 100% !important;
+  }
+  
+  .mytable tbody td{
+    width: 20% !important;
+  }
+
+  .form p {
+    color: #bf1650;
+  }
+
+  input {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid black;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  
+  .label,
+  div > label {
+    line-height: 2;
+    text-align: left;
+    display: block;
+    /* margin-top: 20px; */
+    color: black;
+    font-size: 14px;
+    font-weight: 200;
+    margin-bottom: 5px;
+  }
+  
+  input[type="submit"] {
+    background: #ec5990;
+    color: white;
+    text-transform: uppercase;
+    border: none;
+    margin-top: 40px;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: 100;
+    letter-spacing: 10px;
+  }
+  
+  input[type="submit"]:hover {
+    background: #bf1650;
+  }
+  
+  input[type="button"]:active,
+  input[type="submit"]:active {
+    transition: 0.3s all;
+    /* transform: translateY(3px); */
+    border: 1px solid transparent;
+    opacity: 0.8;
+  }
+  
+  input:disabled {
+    opacity: 0.4;
+  }
+  
+  input[type="button"]:hover {
+    transition: 0.3s all;
+  }
+  
+  input[type="button"],
+  input[type="submit"] {
+    -webkit-appearance: none;
+  }
+
+  .MuiFormControlLabel-label{
+    font-size: 0.86rem !important;
+  }
+
+  .ltr{
+    width: 80%;
+  }
+
+  .hamburger {
+    padding: 15px 15px;
+    display: inline-block;
+    cursor: pointer;
+    transition-property: opacity, filter;
+    transition-duration: 0.15s;
+    transition-timing-function: linear;
+    font: inherit;
+    color: inherit;
+    text-transform: none;
+    background-color: transparent;
+    border: 0;
+    margin: 0;
+    overflow: visible;
+  }
+  .hamburger:hover {
+    opacity: 0.7;
+  }
+  .hamburger.is-active:hover {
+    opacity: 0.7;
+  }
+  .hamburger.is-active .hamburger-inner,
+  .hamburger.is-active .hamburger-inner::before,
+  .hamburger.is-active .hamburger-inner::after {
+    background-color: #000;
+  }
+  
+  .hamburger-box {
+    width: 40px;
+    height: 24px;
+    display: inline-block;
+    position: relative;
+  }
+  
+  .hamburger-inner {
+    display: block;
+    top: 50%;
+    margin-top: -2px;
+  }
+  .hamburger-inner,
+  .hamburger-inner::before,
+  .hamburger-inner::after {
+    width: 40px;
+    height: 4px;
+    background-color: #000;
+    border-radius: 4px;
+    position: absolute;
+    transition-property: transform;
+    transition-duration: 0.15s;
+    transition-timing-function: ease;
+  }
+  .hamburger-inner::before,
+  .hamburger-inner::after {
+    content: "";
+    display: block;
+  }
+  .hamburger-inner::before {
+    top: -10px;
+  }
+  .hamburger-inner::after {
+    bottom: -10px;
+  }
+  
+  /*
+     * Slider
+     */
+  .hamburger--slider .hamburger-inner {
+    top: 2px;
+  }
+  .hamburger--slider .hamburger-inner::before {
+    top: 10px;
+    transition-property: transform, opacity;
+    transition-timing-function: ease;
+    transition-duration: 0.15s;
+  }
+  .hamburger--slider .hamburger-inner::after {
+    top: 20px;
+  }
+  
+  .hamburger--slider.is-active .hamburger-inner {
+    transform: translate3d(0, 10px, 0) rotate(45deg);
+  }
+  .hamburger--slider.is-active .hamburger-inner::before {
+    transform: rotate(-45deg) translate3d(-5.71429px, -6px, 0);
+    opacity: 0;
+  }
+  .hamburger--slider.is-active .hamburger-inner::after {
+    transform: translate3d(0, -20px, 0) rotate(-90deg);
+  }
+
+  #content-desktop {
+    display: block;
+  }
+  #content-mobile {
+    display: none;
+  }
+
+  .nannyDutiesWrapper{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  
+  @media screen and (max-width: 800px) {
+    #content-desktop {
+      display: none;
+    }
+    #content-mobile {
+      display: block;
+    }
+    form{
+      width: 90% !important; 
+    }
+  }
+  #content-mobile-nav {
+    display: none;
+  }
+
+  /* #content-desktop-nav {
+    display: block;
+  } */
+
+  @media screen and (max-width: 1000px) {
+    #content-mobile-nav {
+      display: block;
+    }
+    .nannyDutiesWrapper {
+      flex-wrap: nowrap;
+    }
+    #content-desktop-nav {
+      display: none;
+    }
+    .fourStagesWrapper {
+      flex: 50%;
+    }
+    .row {
+      flex-direction: column;
+    }
+  }
+
+  /* TEST */
+
+  .App {
+    background-color: white;
+  }
+  
+  .Auth-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 65vh;
+  }
+  
+  .Auth-form {
+    width: 420px;
+    box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    border-radius: 8px;
+    background-color: white;
+  }
+  
+  .Auth-form-content {
+    padding-left: 12%;
+    padding-right: 12%;
+  }
+  
+  .Auth-form-title {
+    text-align: center;
+    margin-bottom: 1em;
+    font-size: 24px;
+    color: rgb(34, 34, 34);
+    font-weight: 800;
+  }
+  
+  label {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(34, 34, 34);
+  }
+
+  .select-dropdown {
+    position: relative;
+    background-color: #e6e6e6;
+    width: 100%;
+    float: left;
+    max-width: 100%;
+    border-radius: 2px;
+  }
+  .select-dropdown select {
+    font-family: "helvetica neue", helvetica;
+    font-size: 1rem;
+    font-weight: 200;
+    width: 100%;
+    max-width: 100%;
+    padding: 8px 24px 8px 10px;
+    border: none;
+    background-color: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+  .select-dropdown select:active, .select-dropdown select:focus {
+    outline: none;
+    box-shadow: none;
+  }
+  .select-dropdown:after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    margin-top: -2px;
+    right: 8px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #aaa;
+  }
+
+  .react-tabs__tab-list{
+    width: 75%;
+  }
