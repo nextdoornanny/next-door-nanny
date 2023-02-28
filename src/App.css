@@ -1,11 +1,17 @@
 body{
   font-family: Noto;
 } 
-
+section{
+  margin-bottom: 5%;
+}
 h1{
   font-family: NotoBold;
   font-size: 2.2rem;
   margin: 0.2rem 0;
+}
+
+h2{
+  font-weight: 600;
 }
 
 h3{
@@ -358,4 +364,28 @@ p{
 
   .react-tabs__tab-list{
     width: 75%;
+  }
+
+  .message {
+    display: flex;
+    align-items: center;
+  }
+  
+  
+  .sent {
+    flex-direction: row-reverse;
+  }
+  
+  .sent p {
+    color: white;
+    background: #0b93f6;
+    align-self: flex-end;
+  }
+  .received p {
+    background: #e5e5ea;
+    color: black;
+  }
+
+  .searchInput::placeholder{
+    color: white;
   }

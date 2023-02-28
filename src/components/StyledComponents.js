@@ -122,7 +122,7 @@ export const Header = styled.header`
         z-index: 9999;
         display: flex;
         flex-direction: row;
-        justify-content: flex-end;
+        justify-content: space-between;
         align-items: center;
         height: auto;
         // border-bottom: 1px solid rgb(242, 242, 242);

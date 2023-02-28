@@ -1,18 +1,24 @@
 
 import { useUserAuth } from "../contexts/UserAuthContext";
 import React, { useState } from 'react';
+import Inbox from '../img/icons/mail.png'
+import User from '../img/icons/user.png'
 import styled from '@emotion/styled'
 import { Navigation, Header, NavMenuItem, MobileNavMenuItem, MobileNavigation } from '../components/StyledComponents';
 import { Link } from "react-router-dom";
 import { NavDropdown, Nav } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 
+const NavIcon = styled.img`
+        width: 40px;
+        height: 40px;
+`
+
 
 const ResponsiveLogoHolder = styled.div`
             cursor: pointer;
             font-size: 1.5rem;
-            position: absolute;
-            left: 0; 
+            z-index: 999999;
             color: ${props => props.isDark ? 'white' : 'black'};
             text-decoration: none !important;
             @media (max-width: 1200px) {
@@ -52,9 +58,8 @@ export const NavBar = () => {
     const [showForNannies, setShowForNannies] = useState(false);
     const [howItWorks, setHowItWorks] = useState(false);
     const { logOut, user } = useUserAuth();
-    console.log(user, "user")
     return (
-        <div style={{ position: 'relative', backgroundColor: "white", zIndex: "9999" }}>
+        <div style={{ position: 'relative', backgroundColor: "white", zIndex: "999999" }}>
             <Header>
                 <ResponsiveLogoHolder>
                     <BrandName href='/'>Next Door Nannies</BrandName>
@@ -150,6 +155,7 @@ export const NavBar = () => {
                             <NavMenuItem href="/payroll-hr">Payroll & HMRC</NavMenuItem>
                             <NavMenuItem href="#">Our services</NavMenuItem>
                         </NavLink>
+                        {user ? <NavMenuItem href="/messages">Messages</NavMenuItem> : null}
                         {!user ? <NavMenuItem href="/auth"><Button variant="primary">Log in/Sign up</Button></NavMenuItem> : <NavMenuItem onClick={logOut}><Button variant="primary">Log out</Button></NavMenuItem>}
                     </Nav>
                 </Navigation>
