@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import styled from '@emotion/styled';
 import { UserChat, UserChatInfo, PortraitImage } from "./Search"
-import Portrait from "../../img/portrait.jpeg"
 import { useUserAuth } from '../../contexts/UserAuthContext';
 import { ChatContext } from '../../contexts/ChatContext';
 import { doc, onSnapshot } from 'firebase/firestore';
@@ -26,7 +25,6 @@ const Chats = () => {
 
         user.uid && getChats();
     }, [user.uid]);
-    console.log(chats, "Chats")
     const handleSelect = (u) => {
         dispatch({ type: "CHANGE_USER", payload: u });
     };

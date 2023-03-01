@@ -25,7 +25,7 @@ export const Banner = ({ title, dataset }) => {
             <Flex justifyCenter>
                 {dataset?.map((el, index) => (
                     <Flex alignCenter column style={{ textAlign: "center" }} width="20%" key={index}>
-                        <img src={el.src} style={{ borderRadius: "50%", height: "90px", width: "90px", padding: "5%" }} />
+                        <img src={el.src} alt="" style={{ borderRadius: "50%", height: "90px", width: "90px", padding: "5%" }} />
                         <BannerTitle>{el.step}</BannerTitle>
                         <BannerText>{el.subtitle}</BannerText>
                     </Flex>

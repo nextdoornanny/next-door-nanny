@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { auth, db } from "../auth/firebase";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { addDoc, serverTimestamp } from "firebase/firestore";
 
 const SendMessage = ({ scroll }) => {
     const [message, setMessage] = useState("");

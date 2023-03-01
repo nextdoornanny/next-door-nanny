@@ -3,9 +3,7 @@ import styled from '@emotion/styled';
 import { useUserAuth } from '../../contexts/UserAuthContext'
 import { ChatContext } from '../../contexts/ChatContext';
 import ReactTimeAgo from 'react-time-ago'
-import EmptyProfileImage from "../../img/icons/user1.png"
 import moment from 'moment';
-import { PortraitImage } from './Search';
 
 const StyledMessage = styled.div`
     display: flex;
@@ -30,7 +28,8 @@ display: flex;
 flex-direction: column;
 gap: 10px;
 & > p {
-    background-color: #e4e6ea;
+    background-color: ${props => props.isOwnMessage ? "#e4e6ea" : "#5673b4"};
+    color: ${props => props.isOwnMessage ? "black" : "white"};
     padding: 10px 20px;
     border-radius: 0px 10px 10px 10px;
 }
@@ -40,6 +39,7 @@ gap: 10px;
 & > span {
     font-size: 12px;
     text-align: ${props => props.isOwnMessage ? "right" : "left"};
+
 }
 &:owner{
     flex-direction: row-reverse;
@@ -58,12 +58,12 @@ const Message = ({ message }) => {
     const { user } = useUserAuth()
     console.log(message, "mes")
 
-    const imageToDisplay = () => {
-        if (message.senderId === user.uid) {
-            return user.photoURL
-        }
-        return EmptyProfileImage
-    }
+    // const imageToDisplay = () => {
+    //     if (message.senderId === user.uid) {
+    //         return user.photoURL
+    //     }
+    //     return EmptyProfileImage
+    // }
     const isOwnMessage = message.senderId === user.uid
     const today = new Date()
     const now = today.toLocaleString().split(",")[0];

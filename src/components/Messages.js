@@ -1,19 +1,7 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React from 'react'
 import styled from '@emotion/styled';
-import Message from './Message';
-import SendMessage from './SendMessage';
-import {
-    query,
-    collection,
-    orderBy,
-    onSnapshot,
-    limit,
-    QuerySnapshot,
-} from "firebase/firestore";
-import { db } from "../auth/firebase";
 import Sidebar from './messaging/Sidebar';
 import Chat from './messaging/Chat';
-import { Flex } from './StyledComponents';
 
 const MessageHome = styled.div`
     height: 100vh;
@@ -32,21 +20,6 @@ const MessageContainer = styled.div`
 `
 
 const Messages = () => {
-    const [messages, setMessages] = useState([])
-    const scroll = useRef();
-    useEffect(() => {
-        const q = query(collection(db, "messages"),
-            orderBy("createdAt"))
-        console.log(q, "q")
-        const unsubscribe = onSnapshot(q, (QuerySnapshot) => {
-            let messages = []
-            QuerySnapshot.forEach((doc) => {
-                messages.push({ ...doc.data(), id: doc.id })
-            })
-            setMessages(messages)
-        })
-        return () => unsubscribe
-    }, [])
     return (
         <MessageHome>
             <MessageContainer>

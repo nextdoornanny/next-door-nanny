@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import Nav from './Nav';
 import Search from './Search';
 import Chats from './Chats';
 
