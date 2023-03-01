@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
+    sendPasswordResetEmail,
     onAuthStateChanged,
     signOut,
     GoogleAuthProvider,
@@ -12,7 +13,7 @@ import EmptyProfileImage from "../img/icons/user1.png"
 import { useNavigate, Link } from "react-router-dom";
 
 import { auth, db } from "../auth/firebase";
-
+import { notifyEmailSent } from '../notifications/notifications'
 const userAuthContext = createContext();
 console.log(db, "db")
 export function UserAuthContextProvider({ children }) {
@@ -21,6 +22,13 @@ export function UserAuthContextProvider({ children }) {
     function logIn(email, password) {
         return signInWithEmailAndPassword(auth, email, password);
     }
+
+    const forgotPassword = async (email) => {
+        console.log(email, "email")
+        await sendPasswordResetEmail(auth, email);
+        notifyEmailSent()
+    }
+
     const signUp = async (email, password) => {
         await createUserWithEmailAndPassword(auth, email, password).then((res) => {
             const uid = res.user.uid;
@@ -76,7 +84,7 @@ export function UserAuthContextProvider({ children }) {
 
     return (
         <userAuthContext.Provider
-            value={{ user, logIn, signUp, logOut, googleSignIn }}
+            value={{ user, logIn, signUp, logOut, googleSignIn, forgotPassword }}
         >
             {children}
         </userAuthContext.Provider>

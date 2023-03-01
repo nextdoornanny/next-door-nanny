@@ -48,7 +48,8 @@ const Search = (props) => {
     const [person, setPerson] = useState(null)
     const [error, setError] = useState("")
     const { user } = useUserAuth()
-    const handleSearch = async () => {
+    const handleSearch = async (e) => {
+        setUsername(e.target.value);
         const q = query(collection(db, "users"), where("displayName", "==", username))
         try {
             const querySnapshot = await getDocs(q);
@@ -65,7 +66,7 @@ const Search = (props) => {
     //     handleSearch()
     // }
     const handleKey = (e) => {
-        e.code === "Enter" && handleSearch();
+        e.code === "Enter" && handleSearch(e);
     };
 
     const handleSelect = async () => {

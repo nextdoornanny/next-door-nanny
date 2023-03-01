@@ -19,7 +19,7 @@ const SignInSchema = Yup.object().shape({
 });
 
 const AuthForm = () => {
-    const { logIn, googleSignIn } = useUserAuth();
+    const { logIn, googleSignIn, forgotPassword } = useUserAuth();
     const navigate = useNavigate();
 
     const handleGoogleSignIn = async (e) => {
@@ -47,31 +47,36 @@ const AuthForm = () => {
                     }
                 })}
             >
-                <>
-                    <FormInputWrapper>
-                        <h2>Sign in</h2>
-                        <br />
-                        <Form>
-                            <Field className="mb-3" type="email" name="email" placeholder="Email" />
-                            <ErrorMessage name="email" component="p" style={{ color: "red" }} />
-                            <Field className="mb-3" type="password" name="password" placeholder="Password" />
-                            <Button style={{ width: "240px" }} variant="primary" type="Submit">
-                                Log In
-                            </Button>
-                        </Form>
-                        <hr />
-                        <Flex justifyCenter>
-                            <GoogleButton
-                                onClick={handleGoogleSignIn}
-                                className="g-btn"
-                                type="dark"
-                            />
-                        </Flex>
-                    </FormInputWrapper>
-                    <div className="p-4 box mt-3 text-center">
-                        Don't have an account? <Link to="/signup">Sign up</Link>
-                    </div>
-                </>
+                {({
+                    values,
+                }) => (
+                    <>
+                        <FormInputWrapper>
+                            <h2>Sign in</h2>
+                            <br />
+                            <Form>
+                                <Field className="mb-3" type="email" name="email" placeholder="Email" />
+                                <ErrorMessage name="email" component="p" style={{ color: "red" }} />
+                                <Field className="mb-3" type="password" name="password" placeholder="Password" />
+                                <Button style={{ width: "240px" }} variant="primary" type="Submit">
+                                    Log In
+                                </Button>
+                            </Form>
+                            <Link style={{ margin: "10px 0" }} onClick={() => forgotPassword(values.email)}>Forgot password?</Link>
+                            <hr />
+                            <Flex justifyCenter>
+                                <GoogleButton
+                                    onClick={handleGoogleSignIn}
+                                    className="g-btn"
+                                    type="dark"
+                                />
+                            </Flex>
+                        </FormInputWrapper>
+                        <div className="p-4 box mt-3 text-center">
+                            Don't have an account? <Link to="/signup">Sign up</Link>
+                        </div>
+                    </>
+                )}
             </Formik>
         </Flex>
     );
